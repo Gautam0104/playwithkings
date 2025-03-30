@@ -1,0 +1,99 @@
+<!--
+  Generated template for the StatementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Commssion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-gray">
+
+  <div class="panel" style="display: none;">
+    <div class="wallet-box">
+      <div class="wallet-box-content" style="width:100%;text-align: center;">
+      <p class="mt-0 mb-5 tx-18 tx-color-03">Total Income</p>
+      <h2 class="fw600 tx-26 mb-0 mt-0">₹{{all_data.total_reff_income}}</h2>
+      </div>
+      </div> 
+  </div>
+
+  <div class="tab-section" style="display: none;">
+    <div class="tab-box " (click)="settabs('level1')" [class.active]="activetabs=='level1'">Level 1</div>
+    <div class="tab-box" (click)="settabs('Level2')" [class.active]="activetabs=='Level2'">Level 2</div>
+    </div>
+
+
+
+
+
+    <div class="panel" *ngIf="activetabs=='level1'" style="display: none;">
+      <ion-row>
+          <ion-col>
+              <div class="wallet-box">
+                  <div class="wallet-box-content ml-15" (click)="openlevel(1)">
+                  <p class="mt-0 mb-5 tx-13 tx-color-03">Total People</p>
+                  <h2 class="fw600 tx-26 mb-0 mt-0">{{all_data.total_level_first}}</h2>
+                  </div>
+                  </div> 
+          </ion-col>
+          <ion-col>
+              <div class="wallet-box">
+                  <div class="wallet-box-content ml-15" >
+                  <p class="mt-0 mb-5 tx-13 tx-color-03">Total Contribution</p>
+                  <h2 class="fw600 tx-26 mb-0 mt-0">₹{{all_data.total_level_first_income}}</h2>
+                  </div>
+                  </div>
+          </ion-col>
+      </ion-row>
+   
+  </div>
+
+
+  <div class="panel" *ngIf="activetabs=='Level2'" style="display: none;">
+    <ion-row>
+        <ion-col>
+            <div class="wallet-box">
+                <div class="wallet-box-content ml-15" (click)="openlevel(2)">
+                <p class="mt-0 mb-5 tx-13 tx-color-03">Total People</p>
+                <h2 class="fw600 tx-26 mb-0 mt-0">{{all_data.total_level_three}}</h2>
+                </div>
+                </div> 
+        </ion-col>
+        <ion-col>
+            <div class="wallet-box">
+                <div class="wallet-box-content ml-15">
+                <p class="mt-0 mb-5 tx-13 tx-color-03">Total Contribution</p>
+                <h2 class="fw600 tx-26 mb-0 mt-0">₹{{all_data.total_level_two_income}}</h2>
+                </div>
+                </div>
+        </ion-col>
+    </ion-row>
+ 
+</div>
+  <div class="p15">
+    <div class="recent-list">
+    <ul>
+    <li *ngFor="let d of wallethistory">
+    <div>
+    <p class="mt-0 mb-10 tx-12 line18">{{d.uw_remark}}</p>
+    <p class="mb-0 mt-0 tx-11 tx-color-03">{{changedateformat(d.uw_datetime)}}@ {{changetimeformat(d.uw_datetime)}}</p>
+    </div>
+    <div class="wrl-arrow">
+    <p class="mb-0 mt-0 tx-13 tx-green" *ngIf="d.uw_amount>0">₹+{{d.uw_amount}}</p>
+    <p class="mb-0 mt-0 tx-13 tx-red" *ngIf="d.uw_amount<=0">₹{{d.uw_amount}}</p>
+    
+    </div>
+    </li>
+     
+    </ul>
+    </div>
+    </div>
+ 
+    <div class="loder-page" *ngIf="!hidef">
+        <ion-spinner name="crescent"></ion-spinner>
+        </div>
+</ion-content>

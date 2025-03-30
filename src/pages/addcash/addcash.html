@@ -1,0 +1,121 @@
+<!--
+Generated template for the AddcashPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title>Deposit</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-gray">
+<div class="wallet-box-details">
+ 
+<div class="wallet-box mb-10">
+    <img src="assets/icon/account-wallet.png" class="wd-65">
+    <div class="wallet-box-content ml-15">
+    <p class="mt-0 mb-5 tx-13 tx-color-03">Available Balance</p>
+    <h2 class="fw600 tx-26 mb-0 mt-0">₹{{result_data.balance}}</h2>
+    </div>
+    </div>
+</div>
+
+
+<div class="alert alert-primary mt-10 " *ngIf="services.upidetail!=''" style="display: none;">
+   All UPI ID - 
+   
+   <p><strong>Google Pay : </strong> <a style="color:#000" (click)="copytext(upi_data.theme_google_upi)">{{this.upi_data.theme_google_upi}}</a></p>
+   <p><strong>PhonePe : </strong> <a style="color:#000" (click)="copytext(upi_data.theme_phonepe_upi)">{{this.upi_data.theme_phonepe_upi}}</a></p>
+   <p><strong>Paytm : </strong> <a style="color:#000" (click)="copytext(upi_data.theme_paytm_upi)">{{this.upi_data.theme_paytm_upi}}</a></p>
+  
+   <!--{{services.upidetail}}-->
+
+</div>
+<div class="page-title mb-10 pl-15">Add cash to your account</div>
+<div class="register-box bg-white">
+<div class="register-form">
+<div class="register-form-box">
+<div class="page-title mb-10">Amount to add</div>
+<ion-row>
+<ion-col col-12 class="pl-0 pb-0 mb-10">
+<ion-input type="number" value="" [(ngModel)]="cash_project" placeholder="100"  ></ion-input>
+</ion-col>
+</ion-row>
+<!-- <ion-row>
+    <ion-col col-12 class="pl-0 pb-0  mb-10">
+    <ion-select  placeholder="Select Payment Method" [(ngModel)]="user_payment_method" interface="action-sheet"  >
+    <ion-option value="1">PhonePe</ion-option>
+    <ion-option value="2">Googlepay</ion-option>
+    <ion-option value="3">Paytm</ion-option>
+    </ion-select>
+    </ion-col>
+     
+</ion-row> -->
+
+
+<ion-row  style="display: none;">
+    <ion-col col-12 class="pl-0 pb-0 mb-10">
+    <ion-input type="text" value="" [(ngModel)]="user_upi"
+     placeholder="Enter UPI Address"  ></ion-input>
+    </ion-col>
+    </ion-row>
+
+
+<ion-row>
+<ion-col col-3 class="pl-0">
+<button ion-button full class="button-cash" (click)="selectcash(100)">₹100</button>
+</ion-col>
+<ion-col col-3>
+<button ion-button full class="button-cash" (click)="selectcash(200)">₹200</button>
+
+</ion-col>
+<ion-col col-3>
+<button ion-button full class="button-cash" (click)="selectcash(500)">₹500</button>
+
+</ion-col>
+</ion-row>
+</div>
+</div>
+
+</div>
+<!-- <div class="p15 bg-white">
+<div class="form-section-box mt-10 mb-20" *ngIf="attachment==''">
+    <button ion-button full  class="buttonpn-traa" (click)="attchimage()">Attach Screenshot</button>
+    </div>
+
+    <div class="form-section-box mt-10 mb-20" *ngIf="attachment!=''">
+        <img src="{{attachment}}" style="width:100%">
+        </div>
+</div> -->
+<div class="p15">
+    <h6 class="tx-14 title-box">Recent Transaction</h6>
+    <div class="recent-list">
+    <ul>
+    <li *ngFor="let d of money_requested">
+    <div>
+    <p class="mt-0 mb-10 tx-12 line18"><span *ngIf="d.mr_status==1" class="tx-green">Deposit successfully completed</span>
+        <span *ngIf="d.mr_status==2" class="tx-red">Rejected</span>
+        <span *ngIf="d.mr_status==0" class="tx-blue">Processing</span>
+
+    </p>
+    <p class="mb-0 mt-0 tx-11 tx-color-03">{{changedateformat(d.mr_created_date)}}@ {{changetimeformat(d.mr_created_date)}}</p>
+    </div>
+    <div class="wrl-arrow">
+    <p class="mb-0 mt-0 tx-13 tx-green" >₹{{d.mr_amount}}</p>
+     
+    </div>
+    </li>
+     
+    </ul>
+    </div>
+    </div>
+</ion-content>
+
+<ion-footer class="">
+    <div class="error-message" *ngIf="error_message!=''">{{error_message}}</div>
+    <div class="p10">
+<button ion-button full class="buttonab" (click)="onSaveBooking()">Add</button>
+</div>
+</ion-footer>

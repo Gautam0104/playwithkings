@@ -1,0 +1,45 @@
+<!--
+Generated template for the MysubscriptionPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar>
+<ion-title>My Subscription</ion-title>
+</ion-navbar>
+</ion-header>
+<ion-content class="bg-gray">
+<div class="error-message" *ngIf="login_error_message!=''">{{login_error_message}}</div>
+<div class="subscription" style="display: none;">
+<ion-row>
+<ion-col col-12>
+<div class="subscription-box">
+<ion-input type="text" value="" placeholder="Enter Subscription Key" [(ngModel)]="inputkey"></ion-input>
+<button ion-button full class="button-fill mt-10" (click)="unlockdata()">Unlock</button>
+</div>
+</ion-col>
+</ion-row>
+</div>
+<div class="p15"  *ngIf="orders.length>0">
+<div class="bkl-box mb-10" *ngFor="let wallet of orders">
+<div class="bkl-box-content pl-0">
+<p class="mt-0 tx-13  mb-5 tx-color-03">Order Id: {{wallet.upd_id}}</p>
+<h6 class="mt-0 tx-14 mb-10">{{wallet.neon_package.sub_pack_title}}</h6>
+<div class="uprice">
+<span class="tx-15 fw600">₹{{wallet.upd_package_amount}}</span>
+</div>
+<p class="mb-0 mt-0 bkl-date tx-11 tx-color-03">{{changedateformat(wallet.upd_activation_date)}} @ {{changedateformat(wallet.upd_expiry_date)}}</p>
+</div>
+</div>
+</div>
+
+
+<div class="no-img tx-center" *ngIf="orders.length<=0">
+<div>
+<img src="assets/imgs/no-study-material.png" class="wd-150">
+<h6 class="mb-5">No subscription yet!</h6>
+<p class="line22 tx-13 tx-color-03 mt-0">Check this section for subscription</p>
+</div>
+</div>
+</ion-content>

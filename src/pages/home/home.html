@@ -1,0 +1,92 @@
+<ion-header class="bg-home">
+<ion-navbar>
+    <ion-buttons left>    
+<button ion-button  (click)="openaccount()">
+<div class="header-avtar">
+<div class="menu-show">
+<img src="assets/icon/menu-circle.png">
+</div>
+<img src="assets/icon/avtar.png">
+<div class="header-avtar-content">
+<span class="tx-12 tx-white">{{user_info.user_first_name}}!</span>
+<h6 class="tx-14 mb-0  mt-0 tx-white">{{user_info.user_custom_id}}</h6>
+</div>
+</div>
+</button>
+</ion-buttons>
+<ion-buttons end style="display: inline-flex;">
+<button ion-button icon-only class="tx-white "   (click)="openwallet()" >
+<ion-icon class="custom-coins mr-5" ></ion-icon>     ₹{{dashboard_data.balance}}
+</button>
+<button ion-button icon-only  class="mr-5 " (click)="opennotification()" >
+    <ion-icon name="ios-notifications" ></ion-icon> <span *ngIf="services.notificationcount>0" class="badge">{{services.notificationcount}}</span>
+
+    </button>
+ 
+ 
+</ion-buttons>
+
+
+
+
+</ion-navbar>
+</ion-header>
+<ion-content class="bg-home">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="p15" *ngIf="hidef">
+    
+     <div class="slider-home  pb-5" *ngIf="dashboard_data.slider.length>0">
+        <ion-slides  pager autoplay="500" loop="true" speed="3000" spaceBetween="10">
+            <ion-slide *ngFor="let sl of dashboard_data.slider">
+    <img src="{{dashboard_data.slider_url}}{{sl.slider_image}}" class="radius5">
+    </ion-slide>
+    </ion-slides>
+    </div>
+     <div class="bkl-box mb-40 tx-center" style="    background: transparent;" *ngIf="last_result!=null">
+    <div class="bkl-box-content pl-0 ">
+    <h3 class="mt-0 tx-25 tx-theme mb-10 tx-center"  style="font-size: 37px;">{{last_result.mg_house}}</h3>
+    <p class="mt-0 tx-20  mb-5  tx-center" >{{services.gettimeddatewitham(last_result.mg_time)}}</p>
+    <div class="uprice  tx-center">
+    <span class="tx-25 fw600 tx-theme " [style.color]="color_data" style="font-size:52px">{{last_result.mg_number}}</span>
+    </div>
+    </div>
+    </div>
+     
+    
+    <div class="box-upcomming mb-40" >
+    <ion-row>
+    <ion-col col-6 *ngFor="let data of lastforresult;let k=index">
+    <div class="bkl-box  tx-center" [style.background]="color_arry[k]">
+    <div class="bkl-box-content pl-0 ">
+    <div class="uprice  mb-5 tx-center">
+    <span class="tx-16 fw600 tx-white ">{{data.mg_number}}</span>
+    </div>
+    <h6 class="mt-0 tx-12 mb-5 tx-white  tx-center" >{{data.mg_house}}</h6>
+    <p class="mt-0 tx-12  mb-0 tx-white tx-center">{{services.gettimeddatewitham(data.mg_time)}}</p>
+    </div>
+    </div>
+    </ion-col>
+    <ion-col col-6 *ngFor="let data of lastdashforresult;let k=index">
+        <div class="bkl-box  tx-center" [style.background]="color_arry[k]">
+        <div class="bkl-box-content pl-0 ">
+        <div class="uprice  mb-5 tx-center">
+        <span class="tx-16 fw600 tx-white ">-</span>
+        </div>
+        <h6 class="mt-0 tx-12 mb-5 tx-white  tx-center" >{{data.mf_title}}</h6>
+        
+        <p class="mt-0 tx-12  mb-0 tx-white tx-center">{{services.gettimeddatewitham(data.mf_result_time)}}</p>
+        
+        </div>
+        </div>
+        </ion-col>
+    </ion-row>  
+    </div>
+   
+    </div>
+     <div class="loder-page" *ngIf="!hidef">
+    <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    </ion-content>
+    

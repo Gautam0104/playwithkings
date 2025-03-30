@@ -1,0 +1,32 @@
+<!--
+Generated template for the LoginPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar>
+<ion-title></ion-title>
+</ion-navbar>
+</ion-header>
+<ion-content>
+<div class="p25 pt-0 tx-center">
+<img src="assets/imgs/illustration-4.png" class="wd-200">
+<h5 class="mb-5">Login with OTP</h5>
+<p class="tx-gray-light tx-13  mt-0 line22"> Please enter resgister mobile number <br> and login to continue.</p>
+<div class="form-section">
+<div class="form-section-box">
+<ion-input type="text" value="" placeholder="Mobile Number" [(ngModel)]="user_email"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-phone-portrait"></ion-icon></div>
+</div>
+<div class="form-section-box mb-20">
+<button ion-button full  class="buttonab" [disabled]="user_email.length!=10" (click)="loginWithMobile()">Login</button>
+</div>
+</div>
+
+<p class="tx-theme" (click)="openloginviaotp()"><strong>Login with password</strong></p>
+<p class="tx-center mt-30 tx-gray-light tx-14" (click)="signup()">Don't have an account? <span class="tx-theme">Sign Up</span> </p>
+</div>
+<div class="error-message text-center" *ngIf="loginErrorMsg!=''">{{loginErrorMsg}}</div>
+
+</ion-content>

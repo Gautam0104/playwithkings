@@ -1,0 +1,7 @@
+{
+  "name": "qualityeducation",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

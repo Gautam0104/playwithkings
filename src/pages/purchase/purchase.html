@@ -1,0 +1,40 @@
+<!--
+Generated template for the PurchasePage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title>My Purchase</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-gray">
+  <div *ngIf="cart_data.length>0 && hidef">
+<div class="bkl-box mb-10" *ngFor="let pur of  cart_data" (click)="openorder(pur)">
+<div class="bkl-box-img" style="display: none;">
+<img src="https://www.codexosoftware.live/2020/quality-education/uploads/subscribe_image/1595231935profile-logo-new.png">
+</div>
+<div class="bkl-box-content pl-0">
+  <p class="mt-0 tx-13  mb-5 tx-color-03">Order Id: {{pur.trans_id}}</p>
+<h6 class="mt-0 tx-14 mb-10">{{getproductname(pur.ecom_transaction_detail)}}</h6>
+<div class="uprice">
+<span class="tx-15 fw600">₹{{pur.trans_amt}}</span>
+ <span class="tx-13 tx-green ml-5" style="display: none;" >Download</span>
+</div>
+<p class="mb-0 mt-0 bkl-date tx-11 tx-color-03">{{services.gettimeformateddate(pur.trans_datetime)}}</p>
+</div>
+</div>
+</div>
+
+<div class="no-img tx-center" *ngIf="cart_data.length<=0 && hidef">
+  <div>
+    <img src="assets/imgs/no-cart.png" class="wd-200">
+  <h6 class="mb-5">Not Found!</h6>
+   </div>
+  </div>
+ <div class="loder-page" *ngIf="!hidef">
+  <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>

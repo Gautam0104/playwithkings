@@ -1,0 +1,42 @@
+<!--
+Generated template for the OfferPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title [class.ml5]="from!=''">Offers & Promos</ion-title>
+<ion-buttons start (click)="closeModal()" class="close-cion" *ngIf="from!=''">
+    <button ion-button icon-only class="close">
+    <ion-icon name="close"></ion-icon>
+    </button>
+    </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content  class="bg-gray">
+
+   <div *ngIf="hidef" class="p15"> 
+
+<div class="edoffer-apply" *ngIf="from=='cart'">
+<ion-input type="text" value="" placeholder="Enter Promo Code Here"  [(ngModel)]="coupon_code"></ion-input>
+<button ion-button class="apply" (click)="applybyname()">Apply</button>
+</div>
+<div class="edoffer-box" *ngFor="let offer of offercelist">
+
+    <button ion-button class="apply"  *ngIf="from=='cart'" (click)="applybyid(offer)">Apply</button>
+
+ <div class="edoffer-code">{{offer.coupon_code}}</div>
+<h6 class="tx-14">{{offer.coupon_title}}</h6>
+ <hr *ngIf="offer.coupon_description!=''">
+     <div class="tx-13 tx-gray mt-0" *ngIf="offer.coupon_description!=''" [innerHtml]="offer.coupon_description"> </div>
+ </div>
+</div>
+<div class="loder-page" *ngIf="!hidef">
+    <ion-spinner name="crescent"></ion-spinner>
+    </div>
+</ion-content>
+<ion-footer *ngIf="error_message!=''">
+    <div class="error-message" >{{error_message}}</div>
+</ion-footer>

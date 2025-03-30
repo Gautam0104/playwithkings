@@ -1,0 +1,87 @@
+<!--
+  Generated template for the HarfPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding class="bg-harf">
+<ion-icon name="md-information-circle" style="color: #000;font-size: 30px;" class="tx-white" (click)="openrule()"></ion-icon>
+
+<!-- <ion-icon name="md-aperture"  class="tx-white" (click)="openoption()" style="float:right;color: #000;font-size: 30px;"></ion-icon> -->
+<ion-icon name="md-calendar"  class="tx-white" (click)="openhistory()" style="float:right;color: #000;font-size: 30px;margin-right:10px"></ion-icon>
+
+  <div class="tx-center" >
+  <ngx-wheel
+  #wheel
+  width='250'
+  height='250'
+  spinDuration='8'
+  [disableSpinOnClick]='false'
+  [items]='items'
+  [innerRadius]='15'
+  [spinAmount]='15'
+  [textOrientation]='vertical'
+  [textAlignment]='outer'
+  pointerStrokeColor='orange'
+  pointerFillColor='orange'
+  [idToLandOn]='idToLandOndata'
+  (onSpinStart)='before()'
+  (onSpinComplete)='after()'
+>
+</ngx-wheel>
+</div>
+
+<ion-row>
+  <ion-col col-6 style="    text-align: center; color: white;">
+    <label >Wallet</label>
+    <div style="margin-top: 10px;color: #000;" class="bg-bg">
+      {{services.userbalancedata}}
+    </div>
+  </ion-col>
+  <ion-col col-6 style="    text-align: center; color: white;">
+    <label >Last 5 Result</label>
+    <div style="margin-top: 10px;color: #000;" class="bg-bg">
+    {{last5_result.join(' | ')}}
+    </div>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col col-6 style="    text-align: center; color: white;">
+    <label >Next Result</label>
+    <div style="margin-top: 10px;color: #000;" class="bg-bg">
+      {{actultime}}
+    </div>
+  </ion-col>
+  <ion-col col-6 style="    text-align: center; color: white;">
+    <label >Last Result</label>
+    <div style="margin-top: 10px; color: #000;" class="bg-bg">
+     {{last5_result[0]}}
+    </div>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col col-2 *ngFor="let dc of mg_number_sets;let c=index">
+  <div class="pr-form-box">
+  <ion-label class="bg-theme tx-white tx-center mb-0">{{dc.ms_number}}</ion-label>
+  <ion-input type="number" [(ngModel)]="mg_number_sets[c].amount" (keyup)="setnumber()"></ion-input>
+  </div>
+  </ion-col>
+ 
+  </ion-row>
+
+</ion-content>
+<ion-footer >
+  <ion-row *ngIf="!hidevalue">
+    <ion-col col-6 >
+      <button ion-button full class="buttonab green" >{{grand_total_for_jantari}}/-</button>
+     </ion-col>
+    <ion-col col-6 >
+      <button ion-button full class="buttonab green" (click)="placejantaribet()">SUBMIT</button>
+    
+      </ion-col>
+    </ion-row>
+</ion-footer>
+

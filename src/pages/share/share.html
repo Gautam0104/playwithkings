@@ -1,0 +1,45 @@
+<!--
+Generated template for the SharePage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar >
+  <ion-title>INVITE YOUR FRIENDS</ion-title>
+  <ion-buttons end style="display: flex;">
+    <button ion-button icon-only class="mr-5 header-icon-custom tx-white "  style="
+   display: flex;font-size: 18px;width:auto" (click)="openterm()" >
+   <ion-icon name="md-information-circle" style="color: #fff;font-size: 30px;" class="tx-white" ></ion-icon>
+ </button>
+   </ion-buttons>
+  </ion-navbar>
+  </ion-header>
+
+<ion-content class="bg-gray">
+
+<div *ngIf="hidef" >
+
+
+<div class="share-section p15">
+  <img src="assets/imgs/share.png">
+
+<div class="sharew-box">
+
+<div class="sharew-box-content">
+<p class="mt-0 mb-0 tx-13">{{user_sharescreenmessage}}</p>
+</div>
+</div>
+<div class="sharec-box tx-center mb-60"> 
+<h6 class="tx-center tx-14">YOUR REFERRAL CODE</h6>
+<div class="share-code">{{user_code}}</div>
+</div>
+</div>
+</div>
+<div class="loder-page" *ngIf="!hidef">
+  <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+<ion-footer class="border-top bg-white p15" *ngIf="hidef">
+  <button ion-button full class="buttonab" (click)="shareApp()">Invite & Earn</button>
+</ion-footer>

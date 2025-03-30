@@ -1,0 +1,47 @@
+<!--
+Generated template for the AddpromocodePage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-content class="bg-rgba">
+<div class="pop-main-section">
+<div class="pms-header bg-light">
+<h6 class="fw600 mt-0 tx-18 mb-0" *ngIf="color!=''">JOIN {{color!='VIOLET'?color:"BLACK"}}</h6>
+<h6 class="fw600 mt-0 tx-18 mb-0" *ngIf="number!=''">JOIN NUMBER {{number}}</h6>
+<button ion-button (click)="closepage(0)" class="close-button-second ml-auto">
+    <ion-icon name="md-close" class="close-icon"></ion-icon>
+</button>
+</div>
+<div class="register-box bg-white" style="position: initial;margin-top: 0px;">
+    <div class="register-form">
+    <div class="register-form-box">
+    <div class="page-title mb-10">Bet Amount</div>
+    <ion-row>
+    <ion-col col-12 class="pl-0 pb-0 mb-10">
+    <ion-input type="number" value="" [(ngModel)]="contract_money" placeholder="100"  ></ion-input>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col col-3 class="pl-0" *ngFor="let d of bet_options">
+    <button ion-button full class="button-cash" (click)="selectcash(d)">₹{{d}}</button>
+    </ion-col>
+    
+    </ion-row>
+    </div>
+    </div>
+    
+    </div>
+</div>
+</ion-content>
+<ion-footer class="p0 bg-white">
+    <div class="error-message" *ngIf="error_messge!=''">{{error_messge}}</div>
+    <ion-row>
+        <ion-col col-6 class="p0">
+            <button ion-button full class="button-footer-ligh mt-0" (click)="closepage(0)">Cancel</button>
+        </ion-col>
+        <ion-col col-6 class="p0">
+            <button ion-button full class="button-footer mt-0" (click)="closepage(1)">Submit</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

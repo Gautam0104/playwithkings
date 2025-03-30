@@ -1,0 +1,32 @@
+<!--
+  Generated template for the WinninglistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{houses.mf_title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-gray">
+  <div class="st-table bg-white">
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Game</th>
+        <th>No</th>
+        <th>Amount</th>
+      </tr> 
+    <tr  *ngFor="let wallet of coursed">
+      <td class="tx-center">{{services.gettimeformateddate(wallet.bh_created)}}</td>
+      <td class="tx-center">{{wallet.mg_number.mn_title}} {{wallet.bh_number}}</td>
+      <td class="tx-center">{{wallet.bh_number}}</td>
+      <td class="tx-center">{{wallet.bh_winning_amt}}</td>
+    </tr>
+    </table>
+  </div>
+ 
+
+</ion-content>

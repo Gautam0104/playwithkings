@@ -1,0 +1,45 @@
+<!--
+Generated template for the LoginPage page.
+ AAAAN4xvsOY:APA91bENRfDCxYpXbVy0Nb6fhU8fpTijKFgoxCdcq3bln5DJ0601sTHF1f8P2Z62oDilRF_AztuNNUspJVyAYtk117-yNd2AaWeMSmGHY5DJZYA4SSzJhqDx5E5ckOT6JNbuDkzEIAx1 
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="bg-transparent">
+<ion-navbar>
+<ion-title></ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+<div class="p25 pt-0 tx-center">
+<div class="form-section mt-20">
+<div class="form-section-box">
+<ion-input type="text" value="" placeholder="Email id / Mobile Number" [(ngModel)]="user_email"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-mail-outline"></ion-icon></div>
+</div>
+<div class="form-section-box">
+<ion-input [type]="type" value="" placeholder="Password" [(ngModel)]="user_password"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-lock-outline"></ion-icon></div>
+<div class="form-section-picon" *ngIf="type=='password'" (click)="settype()"><ion-icon name="custom-eye"></ion-icon></div>
+<div class="form-section-picon" *ngIf="type=='text'" (click)="settype()"><ion-icon name="custom-eye-close"></ion-icon></div>
+</div>
+<p class="tx-left tx-13 mt-0"  (click)="forgotpass()">Forgot Password? <span class="tx-theme">Reset</span></p>
+<div class="form-section-box mt-10 mb-20">
+<button ion-button full  class="buttonba" (click)="loginwithemailpass()">Login</button>
+</div>
+
+<!-- <p>Watch Video About How To Login In Application – Click on button below</p>
+
+<button ion-button  class="buttonab" (click)="openyoutube()">Click to watch</button> -->
+ 
+</div>
+
+  
+<p class="tx-center tx-gray-light tx-14" style="display:none" (click)="signup()">Don't have an account? <span class="tx-theme">Sign Up</span> </p>
+</div>
+
+</ion-content>
+
+<ion-footer *ngIf="loginErrorMsg!=''">
+    <div class="error-message text-center" >{{loginErrorMsg}}</div>
+</ion-footer>

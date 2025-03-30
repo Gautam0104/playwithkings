@@ -1,0 +1,63 @@
+<!--
+Generated template for the RegisterPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="bg-transparent">
+<ion-navbar>
+<ion-title></ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="registerForm"> 
+
+<div class="p25 tx-center">
+    <img src="assets/imgs/logo.png" class="wd-150">
+<h5 class="mb-5">Register with World777 Games</h5>
+<p class="tx-gray-light  mt-0 line22"> Fill the details & create account.</p>
+<div class="form-section mt-20">
+<div class="form-section-box">
+<ion-input type="text" value="{{user_data.user_first_name}}" formControlName="student_first_name" placeholder="Full Name"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-person-outline"></ion-icon></div>
+</div>
+<div class="form-section-box">
+<ion-input type="number" value="" formControlName="student_phone" placeholder="Mobile Number"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-phone-portrait"></ion-icon></div>
+</div>
+<div class="form-section-box">
+<ion-input type="text" value="{{user_data.user_email_id}}" readonly formControlName="student_email" placeholder="Email id"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-mail-outline"></ion-icon></div>
+</div>
+<div class="form-section-box">
+<ion-input [type]="type" value=""  formControlName="student_password" placeholder="Password"></ion-input>
+<div class="fsb-icon"><ion-icon name="ios-lock-outline"></ion-icon></div>
+<div class="form-section-picon" *ngIf="type=='password'" (click)="settype()"><ion-icon name="custom-eye"></ion-icon></div>
+<div class="form-section-picon" *ngIf="type=='text'" (click)="settype()"><ion-icon name="custom-eye-close"></ion-icon></div>
+</div>
+ 
+<div class="form-section-box"  >
+    <ion-item>
+    <ion-input type="text"  formControlName="student_ref_id" placeholder="Enter your referral code"></ion-input>
+</ion-item>
+<div class="fsb-icon"><ion-icon name="ios-bookmark-outline"></ion-icon></div>
+
+</div>
+<div class="form-section-box mt-20">
+<button ion-button full  class="buttonab" (click)="doRegister()">Register</button>
+</div>
+</div>
+<!-- <p>Watch Video About How To Register In Application – Click on button below</p>
+<button ion-button  class="buttonab" (click)="openyoutube()">Click to watch</button> -->
+<p class="tx-center tx-gray-light tx-14">Alredy have an account?
+     <span class="tx-theme" (click)="openlogin()">Login</span> </p>
+</div>
+</form>
+
+</ion-content>
+
+<ion-footer *ngIf="registerErrorMsg!=''">
+    <div class="error-message text-center" >{{registerErrorMsg}}</div>
+
+</ion-footer>

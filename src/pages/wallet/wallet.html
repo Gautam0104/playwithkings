@@ -1,0 +1,76 @@
+<!--
+Generated template for the WalletPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title >Account</ion-title>
+<ion-buttons end style="display: flex;">
+    <button ion-button icon-only class="mr-5 header-icon-custom tx-white "  style="
+   display: flex;font-size: 18px;width:auto" (click)="openterm()" >
+   <ion-icon name="md-information-circle" style="color: #fff;font-size: 30px;" class="tx-white" ></ion-icon>
+ </button>
+   </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content  class="bg-gray">
+<div *ngIf="hidef">
+<div class="panel">
+    <ion-row>
+        <ion-col>
+            <div class="wallet-box">
+                <img src="assets/icon/account-wallet.png" class="wd-45">
+                <div class="wallet-box-content ml-15">
+                <p class="mt-0 mb-5 tx-13 tx-color-03">Total Amount</p>
+                <h2 class="fw600 tx-26 mb-0 mt-0">₹{{walletbalance}}</h2>
+                </div>
+                </div> 
+        </ion-col>
+        <!-- <ion-col>
+            <div class="wallet-box">
+                <img src="assets/icon/account-wallet.png" class="wd-45">
+                <div class="wallet-box-content ml-15">
+                <p class="mt-0 mb-5 tx-13 tx-color-03">Referral Balance</p>
+                <h2 class="fw600 tx-26 mb-0 mt-0">₹{{user_reffer_balance}}</h2>
+                </div>
+                </div>
+        </ion-col> -->
+    </ion-row>
+ 
+        
+<ion-row>
+    <ion-col col-6 class="p0">
+         <button ion-button full (click)="withdraw()" class="button-footer bg-theme " style="color:#fff">Withdraw</button>
+     </ion-col>
+    <ion-col col-6 class="p0">
+        <button ion-button full (click)="addcash()" class="button-footer">Deposit</button>
+    </ion-col>
+    </ion-row>
+</div>
+<div class="p15">
+    <h6 class="tx-14 title-box">Recent Transaction</h6>
+    <div class="recent-list">
+    <ul>
+    <li *ngFor="let d of wallethistory">
+    <div>
+    <p class="mt-0 mb-10 tx-12 line18">{{d.uw_remark}}</p>
+    <p class="mb-0 mt-0 tx-11 tx-color-03">{{changedateformat(d.uw_datetime)}}@ {{changetimeformat(d.uw_datetime)}}</p>
+    </div>
+    <div class="wrl-arrow">
+    <p class="mb-0 mt-0 tx-13 tx-green" *ngIf="d.uw_amount>0">₹+{{d.uw_amount}}</p>
+    <p class="mb-0 mt-0 tx-13 tx-red" *ngIf="d.uw_amount<=0">₹{{d.uw_amount}}</p>
+    
+    </div>
+    </li>
+     
+    </ul>
+    </div>
+    </div>
+</div>
+<div class="loder-page" *ngIf="!hidef">
+    <ion-spinner name="crescent"></ion-spinner>
+    </div>
+</ion-content>

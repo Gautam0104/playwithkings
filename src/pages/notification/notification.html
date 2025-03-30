@@ -1,0 +1,59 @@
+<!--
+Generated template for the NotificationPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title>Notification</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content   class="bg-gray">
+<div *ngIf="hidef">
+  <ion-list  >
+    <div class="noti-list-box">
+
+              <ion-item-sliding #item *ngFor="let noti of notifications;let i=index">
+    <ion-item>
+      <div class="noti-list">
+        <ul>
+    <li>
+      <div class="noti-list-icon" can-swipe="true" (swipeleft)="swipeLeft($event,noti)">
+        <img src="{{noti.message_image}}" *ngIf="noti.message_image!=''">
+    <img src="assets/icon/test.png" *ngIf="noti.message_image==''">
+    </div>
+    <div class="not-list-content">
+    <h6 class="mt-0 tx-14 mb-2">{{noti.message_title}}</h6>
+    <p class="mb-0 mt-0 tx-12 tx-gray">{{noti.message_text}} </p>
+    </div>
+      
+      
+  </li>
+</ul>
+</div>
+    </ion-item>
+    <ion-item-options side="right">
+    <button ion-button (click)="delete(item)" style="background:#fff">
+    <ion-icon name="trash"></ion-icon>Delete
+    </button>
+    </ion-item-options>
+    </ion-item-sliding>
+  </div>
+     </ion-list>
+  
+    
+
+<div class="no-img tx-center" *ngIf="notifications.length<=0">
+<div>
+  <img src="assets/imgs/no-noti.png" class="wd-150">
+<h6 class="mb-5">No notification yet!</h6>
+<p class="line22 tx-13 tx-color-03 mt-0">Check this section for update, news and general notification</p>
+</div>
+</div>
+</div>
+<div class="loder-page" *ngIf="!hidef">
+  <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>

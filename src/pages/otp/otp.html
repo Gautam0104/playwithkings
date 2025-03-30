@@ -1,0 +1,32 @@
+<!--
+Generated template for the OtpPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="">
+<ion-navbar>
+<ion-title></ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="error-message" *ngIf="registerErrorMsg!=''">{{registerErrorMsg}}</div>
+
+<div class="p25 tx-center">
+<img src="assets/imgs/otp.svg" class="wd-100">
+<h5 class="mb-5 mt-0">Verify Email Account</h5>
+<p class="tx-gray-light  mt-0 line22"> OTP has been sent to you on your<br> registered email id please enter it below</p>
+<div class="form-section mt-20">
+<div class="form-section-box otp-form-box">
+
+    <ion-input type="number" #myInput (keyup)="focust(1)" [(ngModel)]="digi1"></ion-input>
+    <ion-input type="number" #myInput1 (keyup)="focust(2)" [(ngModel)]="digi2"></ion-input>
+    <ion-input type="number" #myInput2 (keyup)="focust(3)" [(ngModel)]="digi3"></ion-input>
+    <ion-input type="number" #myInput3 (keyup)="focust(4)" [(ngModel)]="digi4"></ion-input>
+</div>
+</div>
+<p>I didn't receive a code!</p>
+<p class="tx-theme" (click)="setresendbutton()">Resend Code</p>
+</div>
+</ion-content>

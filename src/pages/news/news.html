@@ -1,0 +1,38 @@
+<!--
+Generated template for the NewsPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header class="border-bottom">
+<ion-navbar>
+<ion-title>{{title}}</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-gray">
+    <div *ngIf="hidef">
+<div class="news-box" (click)="opennewsdetail(blogd)" *ngFor="let blogd of coursed">
+<ion-row>
+<ion-col col-9>
+<p class="mt-0 mb-0 tx-11 tx-color-03">{{blogd.blog_category_name}}</p>
+<h6 class="tx-13 mt-5 line20">{{blogd.blog_title}}</h6>
+<p class="mt-0 mb-0 tx-11 tx-color-02"> <ion-icon name="calendar"></ion-icon> {{services.gettimeformateddate(blogd.blog_date)}}</p>
+</ion-col>
+<ion-col col-3>
+<img src="{{img_url}}{{blogd.blog_image}}" *ngIf="blogd.blog_image!=''">
+</ion-col>
+</ion-row>
+</div>
+</div>
+<div class="no-img tx-center" *ngIf="coursed.length<=0 && hidef">
+    <div>
+      <img src="assets/imgs/no-noti.png" class="wd-150">
+    <h6 class="mb-5">No New/Current Affairs yet!</h6>
+    <p class="line22 tx-13 tx-color-03 mt-0">Check this section for update, news and general notification</p>
+    </div>
+    </div>
+<div class="loder-page" *ngIf="!hidef">
+    <ion-spinner name="crescent"></ion-spinner>
+    </div>
+</ion-content>

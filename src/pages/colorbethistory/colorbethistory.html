@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ColorbethistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Color Bet History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="quz-table" >
+    <table >
+    <tbody>
+      <tr >
+    <th class="tx-left">Order ID</th>
+    <th class="tx-right">Amount</th>
+    <th class="tx-right">Number/Color</th>
+    <th class="tx-right">Result</th>
+  </tr>
+    <tr *ngFor="let prize of coursed">
+    <td class="tx-left">{{prize.mg_period.period_number}}</td>
+    <td class="tx-right">₹{{prize.batting_amount}}</td>
+    <td class="tx-right"  *ngIf="prize.batting_type_value!='VIOLET'">{{prize.batting_type_value}}</td>
+    <td class="tx-right"  *ngIf="prize.batting_type_value=='VIOLET'">BLACK</td>
+    <td class="tx-right"  *ngIf="prize.total_winning_amount>0" [class.tx-green]="prize.total_winning_amount>0">+{{prize.total_winning_amount}}</td>
+    <td class="tx-right"  *ngIf="prize.total_winning_amount<=0" [class.tx-red]="prize.total_winning_amount<=0">-{{prize.batting_amount}}</td>
+  </tr>
+   
+    </tbody>
+  </table>
+</div> 
+</ion-content>

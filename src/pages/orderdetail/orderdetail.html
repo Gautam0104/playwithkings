@@ -1,0 +1,50 @@
+<!--
+Generated template for the OrderdetailPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar>
+<ion-title>Order Detail - #{{order_data.trans_id}}</ion-title>
+</ion-navbar>
+</ion-header>
+<ion-content padding class="bg-gray">
+
+    <div class="bkl-box mb-10" *ngFor="let pur of  order_detail"  >
+        <div class="bkl-box-img odimg_{{pur.td_id}}"  >
+        <img src="{{pur.td_image}}" *ngIf="pur.td_image!=null" (error)="updateUrl($event,pur.td_id)" >
+        </div>
+        <div class="bkl-box-content">
+         <h6 class="mt-0 tx-14 mb-10">{{pur.td_name}}</h6>
+        <div class="uprice">
+        <span class="tx-15 fw600">₹{{pur.td_unit_price}}</span>
+        <span class="tx-13 uold-price tx-gray" style="display: none;">₹400</span>
+        <span class="tx-13 tx-green ml-5" style="display: none;">20% Off</span>
+        <span class="tx-13 tx-green ml-5" style="display: none;" (click)="selectpdfwhennotdownload(pur)"
+         *ngIf="pur.ecom_product!=undefined && pur.ecom_product.product_pdf!='' && pur.d_st==0">Download</span>
+         <span class="tx-13 tx-green ml-5" (click)="static_path(pur)"
+         *ngIf="pur.ecom_product!=undefined && pur.ecom_product.product_pdf!='' && pur.d_st==1">View</span>
+
+        </div>
+         </div>
+        </div>
+
+        <div class="cart-price mt-10">
+            <div class="cart-price-list">
+            <ul>
+                <li>Item Price<span>₹{{item_total}}</span></li>
+
+             <li *ngIf="order_data.trans_coupon_amount>0">Discount<span class="tx-green">-₹{{order_data.trans_coupon_amount}}</span></li>
+            <li *ngIf="order_data.trans_reedem_amount>0">Redeem Amount <span class="tx-green">-₹{{order_data.trans_reedem_amount}}</span></li>
+            <hr>
+            <li class="p15">Total Price<span>₹{{order_data.trans_amt}}</span></li>
+            </ul>
+            </div>
+            </div>
+            
+ 
+ 
+<div class="zagged mb-20"></div>
+
+</ion-content>

@@ -1,0 +1,140 @@
+<!--
+  Generated template for the WithdrawrequestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Withdraw Request</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-gray">
+<div class="wallet-box-details mb-10">
+  <div class="wallet-box">
+    <img src="assets/icon/account-wallet.png" class="wd-65">
+    <div class="wallet-box-content ml-15">
+    <p class="mt-0 mb-5 tx-13 tx-color-03">Withdrawable Amount</p>
+    <h2 class="fw600 tx-26 mb-0 mt-0">₹{{result_data.balance}}</h2>
+    </div>
+    </div>
+ 
+
+</div>
+<div class="page-title mb-10 pl-15">Withdraw amount from your winning amount</div>
+<div class="register-box bg-white p15">
+<div class="register-form">
+<div class="register-form-box">
+<div class="page-title mb-10">Amount to withdraw</div>
+
+<ion-row>
+<ion-col col-12 class="pl-0 pb-0 mb-10">
+<ion-input type="number" value="" [(ngModel)]="cash_project" placeholder="100"  ></ion-input>
+</ion-col>
+</ion-row>
+
+<ion-row>
+<ion-col col-12 class="pl-0 pb-0  mb-10">
+<ion-select  placeholder="Select Payment Method" [(ngModel)]="user_payment_method" interface="action-sheet"  >
+ <ion-option value="4">Bank Account</ion-option>
+<ion-option value="1">PhonePe</ion-option>
+<ion-option value="2">Googlepay</ion-option>
+<ion-option value="3">Paytm</ion-option>
+</ion-select>
+</ion-col>
+ 
+</ion-row>
+
+<ion-row *ngIf="user_payment_method!=4">
+  <ion-col col-12 class="pl-0 pb-0 mb-10">
+  <ion-input type="number" value="" [(ngModel)]="user_payment_mobile" placeholder="Enter Mobile Number"  ></ion-input>
+  </ion-col>
+  </ion-row>
+
+
+<div *ngIf="user_payment_method==4">
+  <ion-row>
+    <ion-col col-12>
+      <div class="pr-form-box">
+      <ion-label>Bank Name</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="user_bank_name"></ion-input>
+      </div>
+      </ion-col>
+    <ion-col col-12>
+    <div class="pr-form-box">
+    <ion-label>Account Holder Name</ion-label>
+    <ion-input type="text" value="" [(ngModel)]="user_bank_holdername"></ion-input>
+    </div>
+    </ion-col>
+     
+    </ion-row>
+    <ion-row>
+    <ion-col col-12>
+    <div class="pr-form-box">
+    <ion-label>Account Number</ion-label>
+    <ion-input type="number"  [(ngModel)]="user_bank_account"></ion-input>
+    </div>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col col-12>
+    <div class="pr-form-box">
+    <ion-label>Confirm Account Number</ion-label>
+    <ion-input   type="number" [(ngModel)]="user_bank_account_conf" ></ion-input>
+    </div>
+    </ion-col>
+    <ion-col col-12>
+    <div class="pr-form-box">
+      <ion-label>IFSC Code</ion-label>
+      <ion-input   type="text" [(ngModel)]="user_bank_ifsc" ></ion-input>
+      </div>
+      </ion-col>
+    </ion-row>
+  </div>
+ </div>
+</div>
+</div>
+<div class="p15">
+<div class="alert alert-danger mt-10 " *ngIf="min_therasold_amt>0">
+₹{{min_therasold_amt}} Mininmum balance is required for generate withdraw request.  
+</div>
+
+<div class="alert alert-primary mt-10 " *ngIf="min_therasold_amt>0">
+{{payment_share_message}}
+</div>
+</div>
+
+
+<div class="p15">
+  <h6 class="tx-14 title-box">Recent Transaction</h6>
+  <div class="recent-list">
+  <ul>
+  <li *ngFor="let d of money_requested">
+  <div>
+  <p class="mt-0 mb-10 tx-12 line18">#{{d.mr_id}} <span *ngIf="d.mr_status==1" class="tx-green">Withdrawal successfully completed</span>
+      <span *ngIf="d.mr_status==2" class="tx-red">Rejected</span>
+      <span *ngIf="d.mr_status==0" class="tx-blue">Processing</span>
+
+  </p>
+  <p class="mb-0 mt-0 tx-11 tx-color-03">{{changedateformat(d.mr_created_date)}}@ {{changetimeformat(d.mr_created_date)}}</p>
+  </div>
+  <div class="wrl-arrow">
+  <p class="mb-0 mt-0 tx-13 tx-green" >₹{{d.mr_amount}}</p>
+   
+  </div>
+  </li>
+   
+  </ul>
+  </div>
+  </div>
+</ion-content>
+
+<ion-footer class=""> 
+  <div class="error-message" *ngIf="error_message!=''">{{error_message}}</div>
+
+  <div class="p15">
+    <button ion-button full class="buttonab" (click)="withdrawrequest()" [disabled]="result_data.balance<=0 || result_data.balance<min_therasold_amt || getdata(start_time) || !getdata(end_time)">Withdraw</button>
+  </div>
+
+</ion-footer>

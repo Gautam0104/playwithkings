@@ -1,0 +1,49 @@
+<!--
+Generated template for the AccountPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-content class="bg-home">
+<div class="account-header">
+<div class="overlay"></div>
+<div class="account-header-avtar tx-center">
+<img src="assets/imgs/profile.png" *ngIf="user_info.user_image==null">
+<img src="{{user_info.user_image}}" *ngIf="user_info.user_image!=null">
+
+<h6 class="tx-white mt-5">{{user_info.user_first_name}} - {{user_info.user_custom_id}}</h6>
+<p class="tx-white mt-0">+91-{{user_info.user_mobile}}</p>
+<!-- <div class="change-img" (click)="changeimage()">Change Image</div> -->
+</div>
+</div>
+<div class="account-list-section">
+<div class="als-box">
+<ul>
+    <li (click)="openprofile()"><img src="assets/icon/user.png" class="wd-20 mr-15">My Profile <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+    <li (click)="openwallet()"><img src="assets/icon/m11.png" class="wd-20 mr-15">My Wallet <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<li (click)="openbidding()"><img src="assets/icon/play.png" class="wd-20 mr-15">Account Statement <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<!---<li (click)="openharf()"><img src="assets/icon/roulette.png" class="wd-20 mr-15">Roulette <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+-->
+<li (click)="oldrecoreds()"><img src="assets/icon/test.png" class="wd-20 mr-15">Lottery Old Results
+    <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+    <li (click)="openrecent()"><img src="assets/icon/m04.png" class="wd-20 mr-15">Recent Transactions <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+    <!--
+<li (click)="mywins()"><img src="assets/icon/coin.png" class="wd-20 mr-15">My Wins
+<ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li> 
+-->
+</ul>
+</div>
+<div class="als-box mt-20">
+<ul>
+<li (click)="statementdata()" ><img src="assets/icon/m09.png" class="wd-20 mr-15">Commission <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<li (click)="openshare()"><img src="assets/icon/m02.png" class="wd-20 mr-15">Refer & Earn <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+
+
+<li (click)="openhelp()"><img src="assets/icon/support.png" class="wd-20 mr-15">Help & Support <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<li (click)="openterms()"><img src="assets/icon/m04.png" class="wd-20 mr-15">Terms & Condtions <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<li (click)="openplay()"><img src="assets/icon/m04.png" class="wd-20 mr-15">How to Play <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+<li (click)="logoutUser()"><img src="assets/icon/m04.png" class="wd-20 mr-15">Logout <ion-icon name="ios-arrow-forward" class="als-arrow"></ion-icon></li>
+</ul>
+</div>
+</div>
+</ion-content>

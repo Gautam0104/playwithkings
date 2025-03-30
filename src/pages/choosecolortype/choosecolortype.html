@@ -1,0 +1,42 @@
+<!--
+  Generated template for the ChoosecolortypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>    
+      <button ion-button  (click)="openaccount()">
+      <div class="header-avtar" >
+   
+      <div class="header-avtar-content" style="padding-left: 0px; ">
+      <span class="tx-12">{{user_data.user_first_name}}!</span>
+      <h6 class="tx-14 mb-0  mt-0">{{user_data.user_custom_id}}</h6>
+      </div>
+      </div>
+      </button>
+      </ion-buttons>
+      <ion-buttons end>
+      <button ion-button icon-only class="mr-5 header-icon-custom" (click)="openwallet()" >
+      <img src="assets/icon/coin.png" > {{balance}}
+      </button>
+       
+      </ion-buttons>
+      </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="p15"  >
+
+    <ion-row class="row" *ngIf="coursed.length>0">
+      <ion-col class="col active" col-6 *ngFor="let wallet of coursed" (click)="opendata(wallet)">
+      <div class="home-box">
+      <img src="{{wallet.image}}" >
+      <div class="home-box-content"><h2>{{wallet.title}}</h2></div>
+      </div>
+      </ion-col>
+      
+      </ion-row>
+  </div>
+</ion-content>

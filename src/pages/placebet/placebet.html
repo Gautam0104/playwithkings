@@ -1,0 +1,157 @@
+<!--
+  Generated template for the PlacebetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{houses.mf_title}}</ion-title>
+    <ion-buttons end style="display: flex;"> 
+      <button ion-button icon-only class="mr-5 header-icon-custom tx-white "  style="
+      display: flex;font-size: 18px;width:auto" (click)="openhistory()" >
+      <ion-icon name="md-calendar" style="color: #fff;font-size: 30px;" class="tx-white" (click)="openrule()"></ion-icon>
+    </button>
+      <button ion-button icon-only class="mr-5 header-icon-custom tx-white "  style="
+      display: flex;font-size: 18px;width:auto" (click)="openterm()" >
+      <ion-icon name="md-information-circle" style="color: #fff;font-size: 30px;" class="tx-white" (click)="openrule()"></ion-icon>
+    </button>
+    <button ion-button icon-only class="mr-5 header-icon-custom tx-white "  style="
+    display: flex;font-size: 18px;width:auto" (click)="openwallet()" >
+    <ion-icon class="custom-coins mr-5" style="font-size: 17px;"></ion-icon>     ₹{{user_balance}}
+    </button>
+      </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="bg-gray">
+  <div class="tab-section" style="display:none">
+    <div class="tab-box " (click)="settabs('OPEN')" [class.active]="activetabs=='OPEN'">SINGLE JODI</div>
+    <div class="tab-box" (click)="settabs('JANTARI')" [class.active]="activetabs=='JANTARI'">JANTARI</div>
+    <div class="tab-box" (click)="settabs('CROSSING')" style="display: none;" [class.active]="activetabs=='CROSSING'">CROSSING</div>
+    </div>
+    <div class="p15" *ngIf="activetabs=='OPEN'">
+      <div class="pr-form p15">
+        
+        <ion-row>
+        <ion-col col-12>
+        <div class="pr-form-box">
+        <ion-label>Number</ion-label>
+        <ion-input type="number"  [(ngModel)]="openbetnumber"></ion-input>
+        </div>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+          <div class="pr-form-box">
+          <ion-label>Amount</ion-label>
+          <ion-input type="number" (keyup)="setamount()" [(ngModel)]="openbetamount"></ion-input>
+          </div>
+          </ion-col>
+          </ion-row>
+       
+        
+        </div>
+    </div>
+    <div class="p15" *ngIf="activetabs=='CROSSING'">
+      <div class="pr-form p15">
+        
+        <ion-row>
+        <ion-col col-5>
+        <div class="pr-form-box">
+         <ion-input type="number"  [(ngModel)]="jodi1"></ion-input>
+        </div>
+        </ion-col>
+        <ion-col col-2 class="bg-theme">
+          <div class="pr-form-box" style="    text-align: center;
+          padding-top: 15px;color:#fff">
+            X
+           </div>
+          </ion-col>
+        <ion-col col-5>
+          <div class="pr-form-box">
+           <ion-input type="number"  [(ngModel)]="jodi2"></ion-input>
+          </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+          <div class="pr-form-box">
+          <ion-label>Amount</ion-label>
+          <ion-input type="number" (keyup)="setamount()" [(ngModel)]="jodiamount"></ion-input>
+          </div>
+          </ion-col>
+          </ion-row>
+          <ion-row>
+          <ion-col col-12>
+            <button ion-button full (click)="placecrossingbet()" class="buttonab">
+            Add</button>
+          </ion-col>
+          </ion-row>
+           
+        </div>
+
+        <div class="pr-form p15">
+          <ion-row>
+            <ion-col col-6 class="bg-gray">
+              Number
+              </ion-col>
+              <ion-col col-6 class="bg-gray">
+                Amount
+              </ion-col>
+            </ion-row>
+          </div>
+    </div>
+
+    <div class="p10" *ngIf="activetabs=='JANTARI'">
+         <div class="pr-form mb-10" *ngFor="let d of jantaridata;let t=index">
+         <div class="title p10">{{d.mn_title}}</div>
+          <ion-row>
+          <ion-col col-2 *ngFor="let dc of d.mg_number_sets;let c=index">
+          <div class="pr-form-box">
+          <ion-label class="bg-theme tx-white tx-center mb-0">{{dc.ms_number}}</ion-label>
+          <ion-input type="number" [(ngModel)]="jantaridata[t].mg_number_sets[c].amount" (keyup)="setnumber()"></ion-input>
+          </div>
+          </ion-col>
+         
+          </ion-row>
+       
+         
+          
+         </div>
+        </div>
+</ion-content>
+<ion-footer class="p10 bg-white border-top" >
+  <div class="error-message" *ngIf="error_message!=''">{{error_message}}</div>
+  <ion-row *ngIf="activetabs=='OPEN'">
+  <ion-col col-6 >
+  <div class="cdds-price-footer">
+  <span class="tx-16 fw600">₹{{grand_total}}</span>
+  <span class="tx-11 tx-color-03">Total Amount</span>
+  </div>
+  </ion-col>
+  <ion-col col-6><button ion-button full (click)="placeopenbet()" class="buttonab">Submit</button></ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="activetabs=='JANTARI'">
+    <ion-col col-6 >
+    <div class="cdds-price-footer">
+    <span class="tx-16 fw600">₹{{grand_total_for_jantari}}</span>
+    <span class="tx-11 tx-color-03">Total Amount</span>
+    </div>
+    </ion-col>
+    <ion-col col-6><button ion-button full (click)="placejantaribet()" class="buttonab">Submit</button></ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="activetabs=='CROSSING'">
+      <ion-col col-6 >
+      <div class="cdds-price-footer">
+      <span class="tx-16 fw600">₹{{grand_total}}</span>
+      <span class="tx-11 tx-color-03">Total Amount</span>
+      </div>
+      </ion-col>
+      <ion-col col-6><button ion-button full (click)="placecrossingbet()" class="buttonab">Submit</button></ion-col>
+      </ion-row>
+  </ion-footer>
