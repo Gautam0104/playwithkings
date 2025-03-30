@@ -3,27 +3,26 @@
   "buildCommand": "npm run build",
   "outputDirectory": "www",
   "public": true,
-  "cleanUrls": true,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "source": "/assets/:path*",
+      "destination": "/assets/:path*"
     },
     {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
+      "source": "/build/:path*",
+      "destination": "/build/:path*"
     },
     {
-      "src": "/manifest.json",
-      "dest": "/manifest.json"
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
     },
     {
-      "src": "/cordova.js",
-      "dest": "/cordova.js"
+      "source": "/cordova.js",
+      "destination": "/cordova.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 } 
