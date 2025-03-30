@@ -8,31 +8,32 @@
   ],
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/assets/(.*)",
-      "dest": "/www/assets/$1"
+      "dest": "/www/assets/$1",
+      "continue": true
     },
     {
       "src": "/build/(.*)",
-      "dest": "/www/build/$1"
+      "dest": "/www/build/$1",
+      "continue": true
     },
     {
-      "src": "/manifest.json",
-      "dest": "/www/manifest.json"
+      "src": "/svg/(.*)",
+      "dest": "/www/svg/$1",
+      "continue": true
     },
     {
-      "src": "/service-worker.js",
-      "dest": "/www/service-worker.js"
+      "src": "/(manifest\\.json|service-worker\\.js|firebase-messaging-sw\\.js|\\.htaccess)",
+      "dest": "/www/$1",
+      "continue": true
     },
     {
-      "src": "/firebase-messaging-sw.js",
-      "dest": "/www/firebase-messaging-sw.js"
-    },
-    {
-      "src": "/.htaccess",
-      "dest": "/www/.htaccess"
-    },
-    {
-      "handle": "filesystem"
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|json))",
+      "dest": "/www/$1",
+      "continue": true
     },
     {
       "src": "/(.*)",
