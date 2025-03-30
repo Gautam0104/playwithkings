@@ -1,23 +1,29 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "www/**/*",
-      "use": "@vercel/static"
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "www",
+  "public": true,
+  "cleanUrls": true,
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "www/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/build/(.*)",
-      "dest": "www/build/$1"
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/cordova.js",
+      "dest": "/cordova.js"
     },
     {
       "src": "/(.*)",
-      "dest": "www/index.html"
+      "dest": "/index.html"
     }
   ]
 } 
