@@ -7,14 +7,18 @@ import * as firebase from "firebase";
 
 @Injectable()
 export class FirebaseProvider {
-  private messaging: any; // Using any type since firebase.messaging is not available
+  private messaging: any;
 
   constructor(
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth,
     private afStorage: AngularFireStorage
   ) {
-    this.messaging = firebase.messaging();
+    // @ts-ignore
+    if (firebase.messaging) {
+      // @ts-ignore
+      this.messaging = firebase.messaging();
+    }
   }
 
   // Authentication Methods
@@ -84,10 +88,18 @@ export class FirebaseProvider {
 
   // Push Notification Methods
   getMessagingToken(): Promise<string> {
+    if (!this.messaging) {
+      return Promise.reject('Firebase messaging not available');
+    }
     return this.messaging.getToken();
   }
 
   onMessage(): Observable<any> {
+    if (!this.messaging) {
+      return new Observable(observer => {
+        observer.error('Firebase messaging not available');
+      });
+    }
     return new Observable((observer) => {
       this.messaging.onMessage((payload) => {
         observer.next(payload);
